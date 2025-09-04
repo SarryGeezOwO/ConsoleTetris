@@ -1,0 +1,42 @@
+1 single cell is an unsigned int
+so we can utilize 4 bytes for 4 attributes
+
+we will be using bit-packing for our 
+grid cell value
+
+512 <- example
+5   <- Sprite
+12  <- color
+
+   nan      nan      spr      col
+00000000 00000000 00000101 00001100
+this is what an unsigned int look like
+under the hood
+technically we should assume no value is signed
+because that would not work
+but luckily all our values are non-zero
+
+but in this case we will only be using 2 bytes
+for 2 attributes
+[Sprite Enum] and [ASCII FG color]
+
+SpriteType spr = static_cast<SpriteType>((cellValue >> 8) & 0xF); // upper 4 bits
+unsigned int col = cellValue & 0xFF; // lower 8 bits
+
+sprite << 8 shifts the sprite value left 8 bits, leaving room for the color.
+
+| color (bitwise OR) puts the color in the lower 8 bits.
+
+
+>> 8 shifts right so sprite’s bits end up at the bottom.
+
+& 0xF masks out just the 4 bits we care about.
+
+& 0xFF gets only the lower 8 bits (color).
+
+
+================================================================
+
+Note: I am just an amateur don't judge me please :(
+      so sorry in advance if this note heck even this entire
+      codebase is garbage
