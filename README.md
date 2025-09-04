@@ -8,6 +8,12 @@ it has no gameover state yet, and doesn't use the modern
 8-Bag shuffle algorithm for the generation of tetrominos.
 Colors are also dependent on the console/terminal used.
 
+## Build
+You can use the makefile to build and generate the game. Though I am not sure
+if it will work. (After all, I am just an amateur)
+ - `make run` - to build and immediately run the game.
+ - `make` - build the game.
+
 ## Inputs
  - `A` - Move left
  - `D` - Move Right
